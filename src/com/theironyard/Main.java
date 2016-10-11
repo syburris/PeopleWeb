@@ -27,6 +27,12 @@ public class Main {
                 "/",
                 (request, response) -> {
                     HashMap m = new HashMap();
+                    int i = 0;
+
+                    while (people.size() < 1000) {
+                        m.put("person",people.get(i).firstName);
+                        i++;
+                    }
 
                     return new ModelAndView(m, "home.html");
                 },
