@@ -31,9 +31,7 @@ public class Main {
                     return new ModelAndView(m, "home.html");
                 },
                 new MustacheTemplateEngine()
-
         );
-
     }
 
     // read the people.txt file and separate it into Person objects, then add person objects to the people ArrayList
