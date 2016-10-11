@@ -9,7 +9,8 @@ public class Main {
 
     static final String PEOPLE = "People.txt";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        ArrayList<Person> people = readFile();
 
     }
 
