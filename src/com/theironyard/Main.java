@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +17,11 @@ public class Main {
     static final String PEOPLE = "People.txt";
 
     public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<Person> people = readFile();
+        ArrayList<Person> people;
+        people = readFile();
+        List<Person> list1 = people.subList(0,19);
+        System.out.println(list1.toString());
+
 
         Spark.get(
                 "/",

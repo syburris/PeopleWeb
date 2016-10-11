@@ -70,4 +70,9 @@ public class Person {
     public void setIp(String ip) {
         this.ip = ip;
     }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + ", from " + country;
+    }
 }
