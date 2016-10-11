@@ -22,9 +22,7 @@ public class Main {
                 "/",
                 (request, response) -> {
                     HashMap m = new HashMap();
-                    if (people.size() > 20) {
-                        ArrayList<Person> list = (ArrayList<Person>) people.subList(0,19);
-                    }
+
                     return new ModelAndView(m, "home.html");
                 },
                 new MustacheTemplateEngine()
