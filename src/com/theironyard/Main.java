@@ -1,8 +1,14 @@
 package com.theironyard;
 
+import spark.ModelAndView;
+import spark.Session;
+import spark.Spark;
+import spark.template.mustache.MustacheTemplateEngine;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +17,19 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList<Person> people = readFile();
+
+        Spark.get(
+                "/",
+                (request, response) -> {
+                    HashMap m = new HashMap();
+                    if (people.size() > 20) {
+                        m.put("list",people.subList(0,19));
+                    }
+                    return new ModelAndView(m, "home.html");
+                },
+                new MustacheTemplateEngine()
+
+        );
 
     }
 
