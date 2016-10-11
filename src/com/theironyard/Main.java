@@ -14,6 +14,8 @@ public class Main {
 
     }
 
+    // read the people.txt file and separate it into Person objects, then add person objects to the people arraylist
+
     public static ArrayList<Person> readFile() throws FileNotFoundException {
         ArrayList<Person> people = new ArrayList<>();
         File file = new File(PEOPLE);
