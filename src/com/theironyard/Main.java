@@ -23,7 +23,7 @@ public class Main {
                 (request, response) -> {
                     HashMap m = new HashMap();
                     if (people.size() > 20) {
-                        m.put("list",people.subList(0,19));
+                        ArrayList<Person> list = (ArrayList<Person>) people.subList(0,19);
                     }
                     return new ModelAndView(m, "home.html");
                 },
