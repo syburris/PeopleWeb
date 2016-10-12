@@ -12,6 +12,7 @@ import java.util.*;
 public class Main {
 
     static final String PEOPLE = "People.txt";
+    static final int OFFSET = 20;
 
     public static void main(String[] args) throws FileNotFoundException {
         HashMap<String, ArrayList<Person>> peopleMap = new HashMap<>();
@@ -25,9 +26,16 @@ public class Main {
         Spark.get(
                 "/",
                 (request, response) -> {
+                    int offset = 0;
+                    String offsetString = request.queryParams("offset");
+                    if (offsetString !=) {
+                        offset = Integer.valueOf(offsetString);
+                    }
+                    ArrayList subList = new ArrayList(people.subList(offset, offset + 20));
                     HashMap m = new HashMap();
-
-                    m.put("people",people);
+                    m.put("people",subList);
+                    m.put("offsetPrevious", subList - OFFSET);
+                    m.put("offsetNext", subList+20);
                     System.out.println(people);
 //                    int i = 0;
 //
