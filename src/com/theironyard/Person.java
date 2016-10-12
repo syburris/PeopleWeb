@@ -1,9 +1,11 @@
 package com.theironyard;
 
+import java.util.Comparator;
+
 /**
  * Created by stevenburris on 10/11/16.
  */
-public class Person {
+public class Person implements Comparable{
     int id;
     String firstName;
     String lastName;
@@ -74,5 +76,10 @@ public class Person {
     @Override
     public String toString() {
         return firstName + " " + lastName + ", from " + country;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

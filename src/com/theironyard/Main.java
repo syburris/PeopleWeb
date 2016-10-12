@@ -7,18 +7,20 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     static final String PEOPLE = "People.txt";
 
     public static void main(String[] args) throws FileNotFoundException {
+        HashMap<String, ArrayList<Person>> peopleMap = new HashMap<>();
         ArrayList<Person> people;
         people = readFile();
+        addTooPeopleMap(people,peopleMap);
+        sortPeople(peopleMap);
+        System.out.println(peopleMap);
+
 
         Spark.get(
                 "/",
@@ -55,4 +57,29 @@ public class Main {
         }
         return people;
     }
+
+    //create HashMap
+
+    public static void addTooPeopleMap(ArrayList<Person> people, HashMap<String, ArrayList<Person>> peopleMap) {
+        ArrayList<Person> lastNames = null;
+        for (Person person : people) {
+            String lastName = person.getLastName();
+            lastNames = peopleMap.get(lastName);
+            if(lastNames == null) {
+                lastNames = new ArrayList<>();
+            }
+            lastNames.add(person);
+            peopleMap.put(lastName,lastNames);
+        }
+    }
+
+    //Sort hashmap by last name
+
+    public static void sortPeople(HashMap<String, ArrayList<Person>> peopleMap) {
+        for (String lastName : peopleMap.keySet()) {
+            ArrayList<Person> lastNameList = peopleMap.get(lastName);
+            Collections.sort(lastNameList);
+        }
+    }
+
 }

@@ -5,11 +5,12 @@
     <title>Home</title>
 </head>
 <body>
-Bonjour
 
-
+<!--Displays all of the names on the home page in an unordered list.-->
 <ul>
     {{#people}}
+        <li>{{firstName}} {{lastName}}</li>
+    {{/people}}
 </ul>
 
 
