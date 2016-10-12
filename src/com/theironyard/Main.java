@@ -19,20 +19,20 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList<Person> people;
         people = readFile();
-        List<Person> list1 = people.subList(0,19);
-        System.out.println(list1.toString());
-
 
         Spark.get(
                 "/",
                 (request, response) -> {
                     HashMap m = new HashMap();
-                    int i = 0;
 
-                    while (people.size() < 1000) {
-                        m.put("person",people.get(i).firstName);
-                        i++;
-                    }
+                    m.put("people",people);
+                    System.out.println(people);
+//                    int i = 0;
+//
+//                    while (people.size() < 1000) {
+//                        m.put("person",people.get(i).firstName);
+//                        i++;
+//                    }
 
                     return new ModelAndView(m, "home.html");
                 },
