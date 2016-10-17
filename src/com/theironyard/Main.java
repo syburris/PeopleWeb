@@ -31,7 +31,7 @@ public class Main {
                         offset = Integer.valueOf(offsetString);
                     }
 
-                    ArrayList sublist = new ArrayList(people.subList(offset,OFFSET));
+                    ArrayList sublist = new ArrayList(people.subList(offset,offset+OFFSET));
 
                     HashMap m = new HashMap();
 
