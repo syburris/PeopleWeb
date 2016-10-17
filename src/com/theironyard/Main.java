@@ -1,5 +1,6 @@
 package com.theironyard;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import spark.ModelAndView;
 import spark.Session;
 import spark.Spark;
@@ -20,8 +21,6 @@ public class Main {
         people = readFile();
         addTooPeopleMap(people,peopleMap);
         sortPeople(peopleMap);
-        System.out.println(peopleMap);
-
 
         Spark.get(
                 "/",
@@ -31,14 +30,29 @@ public class Main {
                     if (offsetString != null) {
                         offset = Integer.valueOf(offsetString);
                     }
+
                     ArrayList sublist = new ArrayList(people.subList(offset,OFFSET));
+
                     HashMap m = new HashMap();
+
+                    m.put("previous", offset-OFFSET);
+                    m.put("next", offset+OFFSET);
+                    m.put("showNext", offset+OFFSET<people.size());
+                    m.put("showPrevious", offset>0);
                     m.put("people",sublist);
-                    System.out.println(sublist);
 
                     return new ModelAndView(m, "home.html");
                 },
                 new MustacheTemplateEngine()
+        );
+
+        Spark.get(
+                "/person",
+                (request, response) -> {
+                    int id = Integer.valueOf(request.queryParams("id"));
+                    Person person = people.get(id-1);
+                    return new ModelAndView(person,"person.html");
+                }
         );
     }
 
