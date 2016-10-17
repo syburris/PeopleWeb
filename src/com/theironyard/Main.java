@@ -28,21 +28,13 @@ public class Main {
                 (request, response) -> {
                     int offset = 0;
                     String offsetString = request.queryParams("offset");
-                    if (offsetString !=) {
+                    if (offsetString != null) {
                         offset = Integer.valueOf(offsetString);
                     }
-                    ArrayList subList = new ArrayList(people.subList(offset, offset + 20));
+                    ArrayList sublist = new ArrayList(people.subList(offset,OFFSET));
                     HashMap m = new HashMap();
-                    m.put("people",subList);
-                    m.put("offsetPrevious", subList - OFFSET);
-                    m.put("offsetNext", subList+20);
-                    System.out.println(people);
-//                    int i = 0;
-//
-//                    while (people.size() < 1000) {
-//                        m.put("person",people.get(i).firstName);
-//                        i++;
-//                    }
+                    m.put("people",sublist);
+                    System.out.println(sublist);
 
                     return new ModelAndView(m, "home.html");
                 },

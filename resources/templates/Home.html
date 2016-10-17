@@ -9,7 +9,7 @@
 <!--Displays all of the names on the home page in an unordered list.-->
 <ul>
     {{#people}}
-        <li>{{firstName}} {{lastName}}</li>
+        <li><a href="person?id={{id}}">{{firstName}}{{lastName}}</a></li>
     {{/people}}
 </ul>
 
