@@ -35,10 +35,10 @@ public class Main {
 
                     HashMap m = new HashMap();
 
-                    m.put("previous", offset-OFFSET);
+                    m.put("back", offset-OFFSET);
                     m.put("next", offset+OFFSET);
                     m.put("showNext", offset+OFFSET<people.size());
-                    m.put("showPrevious", offset>0);
+                    m.put("showBack", offset>0);
                     m.put("people",sublist);
 
                     return new ModelAndView(m, "home.html");

@@ -8,10 +8,19 @@
 
 <!--Displays all of the names on the home page in an unordered list.-->
 <ul>
+    <li><b>PEOPLE:</b></li>
     {{#people}}
         <li><a href="person?id={{id}}">{{firstName}} {{lastName}}</a></li>
     {{/people}}
 </ul>
+<br>
+<br>
+{{#showBack}}
+<a href="/?=offset{{back}}">Back</a>
+{{/showBack}}
+{{#showNext}}
+<a href="/?offset{{next}}">Next</a>
+{{/showNext}}
 
 
 
