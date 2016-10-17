@@ -52,7 +52,8 @@ public class Main {
                     int id = Integer.valueOf(request.queryParams("id"));
                     Person person = people.get(id-1);
                     return new ModelAndView(person,"person.html");
-                }
+                },
+                new MustacheTemplateEngine()
         );
     }
 
