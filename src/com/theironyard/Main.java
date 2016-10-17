@@ -70,6 +70,7 @@ public class Main {
             Person person = new Person(Integer.valueOf(columns[0]),columns[1],columns[2],columns[3],columns[4],columns[5]);
             people.add(person);
         }
+        Collections.sort(people);
         return people;
     }
 
